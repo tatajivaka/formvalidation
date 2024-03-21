@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <style>
+      span{
+        display: none;
+      }
+      input{
+        border-width: 5px ;
+        border-radius: 50px;
+        border-style: double;
+      }
+      form{
+        text-align: center;
+      }
+      div{
+        background-color: aqua;
+        width: 100%;
+        height:100px;
+        border:5px solid black;
+      }
+      
+     </style>
+    </head>
+    <body>
+        <center>
+        <h1> Form Validation</h1>
+    </center>
+    <div>
+    <form action="">
+      <input type="text" placeholder="username"><br><br>
+      <input type="password" placeholder="passwors"><br>
+      
+    <span>please fil the credentials</span>
+      <input type="submit">
+    </form>
+  </div>
+      <script>
+var d=document.forms;
+        //console.log(document.forms)
+var spn =document.getElementsByTagName("span")
+
+
+ 
+        // console.log(d[0])
+        
+        var arr=[]
+
+        d[0].addEventListener("submit",function(e){
+
+         
+            e.preventDefault();
+
+            // console.log(e)
+            // console.log("userName: "+e.target[0].value)
+            // console.log("password: "+e.target[1].value)
+            var obj={
+            name:e.target[0].value,
+            password:e.target[1].value
+        }
+        if(obj.name==0 && obj.password==0){
+
+          spn[0].style.display="inline";
+          spn[0].style.color="red";
+
+          e.target[0].style.border="2px solid red";
+          e.target[1].style.border="2px solid red"
+          //alert("please Enter UserName And password")
+        }
+        
+        arr.push(obj);
+
+        console.log(arr)
+
+        localStorage.setItem("user",JSON.stringify(arr))
+        
+        e.target[0].value="";
+        e.target[1].value="";
+})
+      
+     
+      
+      </script>
+    </body>
+</html>
